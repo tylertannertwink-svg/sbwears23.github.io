@@ -1,165 +1,959 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Stoner Bear</title>
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: black;
-            color: white;
-            font-family: 'Trebuchet MS', sans-serif;
-            overflow-x: hidden;
-        }
+<meta charset="UTF-8">
 
-        /* NAVIGATION BAR */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 40px;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .nav-logo {
-            font-size: 22px;
-            font-weight: bold;
-            letter-spacing: 4px;
-            color: gold;
-        }
+<title>STONER BEAR | Luxury Streetwear</title>
 
-        .nav-links a {
-            text-decoration: none;
-            color: white;
-            margin-left: 30px;
-            font-size: 14px;
-            letter-spacing: 2px;
-            transition: 0.3s;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-        .nav-links a:hover {
-            color: #39FF14;
-        }
+<style>
 
-        /* Smoke Background */
-        body::before {
-            content: "";
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.04), transparent 40%),
-                        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.04), transparent 40%),
-                        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03), transparent 60%);
-            animation: smokeMove 30s linear infinite;
-            z-index: -3;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
 
-        @keyframes smokeMove {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.2); }
-            100% { transform: rotate(360deg) scale(1); }
-        }
+body{
 
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            padding-top: 80px;
-        }
+background:#050505;
 
-        .logo-bg {
-            position: absolute;
-            width: 500px;
-            opacity: 0.07;
-            animation: float 6s ease-in-out infinite;
-            z-index: -1;
-        }
+color:white;
 
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-25px); }
-            100% { transform: translateY(0px); }
-        }
+font-family:Inter,sans-serif;
 
-        .brand {
-            font-size: 75px;
-            letter-spacing: 10px;
-            font-weight: bold;
-            color: gold;
-            animation: glow 3s ease-in-out infinite alternate;
-        }
+overflow-x:hidden;
 
-        @keyframes glow {
-            from { text-shadow: 0 0 10px gold; }
-            to { text-shadow: 0 0 35px #39FF14; }
-        }
+}
 
-        .tagline {
-            margin-top: 20px;
-            font-size: 18px;
-            letter-spacing: 4px;
-            color: #ccc;
-        }
+a{
 
-        .buttons {
-            margin-top: 50px;
-        }
+text-decoration:none;
 
-        .btn {
-            background: gold;
-            color: black;
-            padding: 14px 35px;
-            text-decoration: none;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin: 10px;
-            border-radius: 4px;
-            transition: 0.3s;
-            display: inline-block;
-        }
+color:white;
 
-        .btn:hover {
-            background: #39FF14;
-            box-shadow: 0 0 25px #39FF14;
-        }
-    </style>
+}
+
+img{
+
+max-width:100%;
+
+display:block;
+
+}
+
+header{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+padding:25px 8%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:rgba(0,0,0,.45);
+
+backdrop-filter:blur(18px);
+
+z-index:999;
+
+transition:.4s;
+
+}
+
+.logo{
+
+font-size:34px;
+
+font-family:"Cormorant Garamond",serif;
+
+letter-spacing:6px;
+
+font-weight:700;
+
+color:white;
+
+}
+
+nav{
+
+display:flex;
+
+gap:35px;
+
+align-items:center;
+
+}
+
+nav a{
+
+font-size:15px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#D4AF37;
+
+}
+
+.cart{
+
+padding:12px 22px;
+
+border:1px solid #D4AF37;
+
+border-radius:40px;
+
+}
+
+.hero{
+
+height:100vh;
+
+background:
+
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.55)),
+
+url('hero.jpg');
+
+background-size:cover;
+
+background-position:center;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+}
+
+.hero-content{
+
+animation:fadeUp 1.5s ease;
+
+}
+
+.hero h1{
+
+font-size:90px;
+
+font-family:"Cormorant Garamond",serif;
+
+letter-spacing:12px;
+
+margin-bottom:15px;
+
+}
+
+.hero p{
+
+font-size:22px;
+
+letter-spacing:3px;
+
+margin-bottom:40px;
+
+color:#ddd;
+
+}
+
+.hero a{
+
+display:inline-block;
+
+padding:18px 42px;
+
+background:#D4AF37;
+
+color:black;
+
+font-weight:bold;
+
+letter-spacing:2px;
+
+border-radius:40px;
+
+transition:.4s;
+
+}
+
+.hero a:hover{
+
+background:white;
+
+transform:translateY(-4px);
+
+}
+
+@keyframes fadeUp{
+
+0%{
+
+opacity:0;
+
+transform:translateY(40px);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+section{
+
+padding:110px 8%;
+
+}
+
+.section-title{
+
+font-size:48px;
+
+font-family:"Cormorant Garamond",serif;
+
+margin-bottom:60px;
+
+letter-spacing:5px;
+
+text-align:center;
+
+}
+.collections{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+gap:40px;
+
+margin-top:40px;
+
+}
+
+.collection{
+
+position:relative;
+
+overflow:hidden;
+
+border-radius:24px;
+
+cursor:pointer;
+
+background:#111;
+
+transition:.45s;
+
+box-shadow:0 15px 40px rgba(0,0,0,.35);
+
+}
+
+.collection:hover{
+
+transform:translateY(-12px);
+
+}
+
+.collection img{
+
+width:100%;
+
+height:520px;
+
+object-fit:cover;
+
+transition:1s;
+
+}
+
+.collection:hover img{
+
+transform:scale(1.08);
+
+}
+
+.collection::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+bottom:0;
+
+width:100%;
+
+height:55%;
+
+background:linear-gradient(transparent,rgba(0,0,0,.95));
+
+}
+
+.collection-info{
+
+position:absolute;
+
+bottom:35px;
+
+left:35px;
+
+z-index:5;
+
+}
+
+.collection-info h2{
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:42px;
+
+letter-spacing:4px;
+
+margin-bottom:12px;
+
+}
+
+.collection-info p{
+
+letter-spacing:2px;
+
+color:#ddd;
+
+margin-bottom:20px;
+
+}
+
+.collection-info a{
+
+display:inline-block;
+
+padding:14px 28px;
+
+border:1px solid #D4AF37;
+
+color:#D4AF37;
+
+border-radius:40px;
+
+transition:.35s;
+
+}
+
+.collection-info a:hover{
+
+background:#D4AF37;
+
+color:black;
+
+}
+
+.best-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:35px;
+
+margin-top:60px;
+
+}
+
+.product{
+
+background:#111;
+
+border-radius:22px;
+
+overflow:hidden;
+
+transition:.4s;
+
+border:1px solid rgba(212,175,55,.15);
+
+}
+
+.product:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 20px 50px rgba(212,175,55,.18);
+
+}
+
+.product img{
+
+width:100%;
+
+height:380px;
+
+object-fit:cover;
+
+transition:.8s;
+
+}
+
+.product:hover img{
+
+transform:scale(1.05);
+
+}
+
+.product-content{
+
+padding:28px;
+
+text-align:center;
+
+}
+
+.product h3{
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:30px;
+
+margin-bottom:10px;
+
+letter-spacing:2px;
+
+}
+
+.price{
+
+color:#D4AF37;
+
+font-size:24px;
+
+margin-bottom:20px;
+
+font-weight:bold;
+
+}
+
+.shop-btn{
+
+display:inline-block;
+
+padding:14px 32px;
+
+background:#D4AF37;
+
+color:black;
+
+border-radius:40px;
+
+font-weight:600;
+
+transition:.35s;
+
+}
+
+.shop-btn:hover{
+
+background:white;
+
+}
+
+.story{
+
+max-width:900px;
+
+margin:auto;
+
+text-align:center;
+
+}
+
+.story h2{
+
+font-size:54px;
+
+font-family:"Cormorant Garamond",serif;
+
+letter-spacing:5px;
+
+margin-bottom:30px;
+
+}
+
+.story p{
+
+font-size:19px;
+
+line-height:1.9;
+
+color:#d8d8d8;
+
+}
+
+.instagram{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:18px;
+
+margin-top:50px;
+
+}
+
+.instagram img{
+
+height:280px;
+
+width:100%;
+
+object-fit:cover;
+
+transition:.5s;
+
+cursor:pointer;
+
+}
+
+.instagram img:hover{
+
+transform:scale(1.05);
+
+opacity:.85;
+
+}
+
+footer{
+
+padding:90px 8%;
+
+text-align:center;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+}
+
+footer h2{
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:42px;
+
+letter-spacing:5px;
+
+margin-bottom:25px;
+
+}
+
+footer p{
+
+color:#aaa;
+
+margin:12px 0;
+
+}
+
+@media(max-width:900px){
+
+.hero h1{
+
+font-size:56px;
+
+letter-spacing:5px;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+.collections{
+
+grid-template-columns:1fr;
+
+}
+
+.best-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.instagram{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-<div class="navbar">
-    <div class="nav-logo">STONER BEAR</div>
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="classic-tee.html">Classic Tees</a>
-        <a href="hoodies.html">Hoodies</a>
-        <a href="beanies-accessories.html">Beanies & Accessories</a>
-        <a href="shop.html">Shop</a>
-    </div>
+<header>
+
+<div class="logo">STONER BEAR</div>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="hoodies.html">Hoodies</a>
+
+<a href="classictee.html">Classic Tees</a>
+
+<a href="accessories.html">Accessories</a>
+
+<a href="cart.html" class="cart">Cart</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>STONER BEAR</h1>
+
+<p>CRAFTED FOR THE UNCOMMON</p>
+
+<a href="hoodies.html">SHOP COLLECTION</a>
+
 </div>
 
-<div class="hero">
-    <img src="logo.png" class="logo-bg">
-    <div class="brand">STONER BEAR</div>
-    <div class="tagline">TRAP ENERGY • LUXURY MINDSET • LIMITED DROPS</div>
+</section>
 
-    <div class="buttons">
-        <a href="shop.html" class="btn">ENTER SHOP</a>
-        <a href="classic-tee.html" class="btn">VIEW DROP</a>
-    </div>
+<section>
+
+<h2 class="section-title">FEATURED COLLECTIONS</h2>
+
+<div class="collections">
+
+<div class="collection">
+
+<img src="hero-hoodie.jpg">
+
+<div class="collection-info">
+
+<h2>HOODIES</h2>
+
+<p>Premium heavyweight streetwear.</p>
+
+<a href="hoodies.html">Explore</a>
+
 </div>
+
+</div>
+
+<div class="collection">
+
+<img src="hero-tee.jpg">
+
+<div class="collection-info">
+
+<h2>CLASSIC TEES</h2>
+
+<p>Minimal. Timeless. Premium.</p>
+
+<a href="classictee.html">Explore</a>
+
+</div>
+
+</div>
+
+<div class="collection">
+
+<img src="hero-accessories.jpg">
+
+<div class="collection-info">
+
+<h2>ACCESSORIES</h2>
+
+<p>Complete your fit.</p>
+
+<a href="accessories.html">Explore</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<section>
+
+<h2 class="section-title">BEST SELLERS</h2>
+
+<div class="best-grid">
+
+<div class="product">
+
+<img src="stoner bear classic hoodie.jpeg" alt="Classic Hoodie">
+
+<div class="product-content">
+
+<h3>Classic Hoodie</h3>
+
+<div class="price">$50</div>
+
+<a href="hoodies.html" class="shop-btn">Shop Now</a>
+
+</div>
+
+</div>
+
+<div class="product">
+
+<img src="stoner bear origins tee.jpeg" alt="Origins Tee">
+
+<div class="product-content">
+
+<h3>Origins Tee</h3>
+
+<div class="price">$30</div>
+
+<a href="classictee.html" class="shop-btn">Shop Now</a>
+
+</div>
+
+</div>
+
+<div class="product">
+
+<img src="antisocial-baseball-cap.jpeg" alt="Baseball Cap">
+
+<div class="product-content">
+
+<h3>Antisocial Cap</h3>
+
+<div class="price">$25</div>
+
+<a href="accessories.html" class="shop-btn">Shop Now</a>
+
+</div>
+
+</div>
+
+<div class="product">
+
+<img src="antisocial-socks.jpeg" alt="Socks">
+
+<div class="product-content">
+
+<h3>Antisocial Socks</h3>
+
+<div class="price">$15</div>
+
+<a href="accessories.html" class="shop-btn">Shop Now</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="story">
+
+<h2>OUR STORY</h2>
+
+<p>
+
+Stoner Bear was created for people who move with confidence and embrace individuality.
+Every collection combines premium quality, clean design, and timeless streetwear aesthetics.
+We don't chase trends—we create pieces that are built to stand out and made to last.
+
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="section-title">FOLLOW THE MOVEMENT</h2>
+
+<div class="instagram">
+
+<img src="hero-hoodie.jpg" alt="Campaign Image 1">
+
+<img src="hero-tee.jpg" alt="Campaign Image 2">
+
+<img src="hero-accessories.jpg" alt="Campaign Image 3">
+
+<img src="stoner bear classic hoodie.jpeg" alt="Product Image">
+
+</div>
+
+<div style="text-align:center;margin-top:40px;">
+
+<a href="https://instagram.com/stonerbear23" target="_blank" class="shop-btn">
+
+FOLLOW @STONERBEAR23
+
+</a>
+
+</div>
+
+</section>
+
+<section>
+
+<div style="max-width:700px;margin:auto;text-align:center;">
+
+<h2 class="section-title">JOIN THE DROP LIST</h2>
+
+<p style="color:#bbb;margin-bottom:30px;">
+
+Be the first to know about new releases, exclusive drops, and special offers.
+
+</p>
+
+<form>
+
+<input
+type="email"
+placeholder="Enter your email"
+style="width:100%;padding:18px;border:none;border-radius:40px;margin-bottom:20px;font-size:16px;text-align:center;">
+
+<button
+type="submit"
+style="padding:18px 45px;background:#D4AF37;border:none;border-radius:40px;font-weight:bold;font-size:16px;cursor:pointer;">
+
+SUBSCRIBE
+
+</button>
+
+</form>
+
+</div>
+
+</section>      
+    <footer>
+
+<h2>STONER BEAR</h2>
+
+<p>Crafted for the Uncommon.</p>
+
+<p>Premium Streetwear • Limited Drops</p>
+
+<div style="margin:35px 0;display:flex;justify-content:center;gap:30px;flex-wrap:wrap;">
+
+<a href="index.html">Home</a>
+
+<a href="hoodies.html">Hoodies</a>
+
+<a href="classictee.html">Classic Tees</a>
+
+<a href="accessories.html">Accessories</a>
+
+<a href="cart.html">Cart</a>
+
+<a href="https://instagram.com/stonerbear23" target="_blank">Instagram</a>
+
+</div>
+
+<p style="margin-top:30px;color:#777;">
+
+© 2026 STONER BEAR. ALL RIGHTS RESERVED.
+
+</p>
+
+</footer>
+
+<script>
+
+// Fade-in animation when scrolling
+
+const observer = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+
+entry.target.style.transform="translateY(0)";
+
+}
+
+});
+
+},{
+threshold:0.15
+});
+
+document.querySelectorAll("section").forEach(section=>{
+
+section.style.opacity="0";
+
+section.style.transform="translateY(60px)";
+
+section.style.transition="all 1s ease";
+
+observer.observe(section);
+
+});
+
+// Header background on scroll
+
+window.addEventListener("scroll",()=>{
+
+const header=document.querySelector("header");
+
+if(window.scrollY>80){
+
+header.style.background="rgba(0,0,0,.85)";
+
+}else{
+
+header.style.background="rgba(0,0,0,.45)";
+
+}
+
+});
+
+</script>
 
 </body>
-</html>
+
+</html>          
