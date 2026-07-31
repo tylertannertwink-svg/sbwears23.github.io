@@ -1,146 +1,209 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout | Stoner Bear</title>
+
+<title>Checkout | STONER BEAR</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #0c0c0c, #1a1a1a);
-    color: white;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-.container {
-    max-width: 500px;
-    margin: 80px auto;
-    background: #111;
-    padding: 35px;
-    border-radius: 20px;
-    box-shadow: 0 0 40px rgba(212,175,55,0.15);
+body{
+font-family:Inter,sans-serif;
+background:#050505;
+color:#fff;
 }
 
-h1 {
-    text-align: center;
-    color: #d4af37;
+header{
+padding:30px;
+text-align:center;
+border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-.product-info {
-    margin: 20px 0;
-    font-size: 18px;
-    color: #d4af37;
+header h1{
+font-family:"Cormorant Garamond",serif;
+font-size:42px;
+letter-spacing:6px;
 }
 
-label {
-    display: block;
-    margin-top: 15px;
-    font-size: 14px;
+.container{
+max-width:1200px;
+margin:50px auto;
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:40px;
+padding:0 30px;
 }
 
-select, input {
-    width: 100%;
-    padding: 12px;
-    margin-top: 5px;
-    border-radius: 10px;
-    border: none;
-    background: #1c1c1c;
-    color: white;
+.form-box,
+.summary{
+background:#111;
+padding:35px;
+border-radius:20px;
+border:1px solid rgba(212,175,55,.15);
 }
 
-button {
-    margin-top: 20px;
-    width: 100%;
-    padding: 14px;
-    font-weight: bold;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    font-size: 15px;
+h2{
+font-family:"Cormorant Garamond",serif;
+font-size:32px;
+margin-bottom:25px;
+letter-spacing:2px;
 }
 
-.whatsapp-btn {
-    background: #25D366;
-    color: white;
+label{
+display:block;
+margin-top:18px;
+margin-bottom:8px;
+font-size:14px;
+color:#ccc;
 }
 
-.instagram-btn {
-    background: linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
-    color: white;
+input,
+select,
+textarea{
+
+width:100%;
+padding:15px;
+background:#181818;
+border:1px solid #333;
+color:white;
+border-radius:12px;
+font-size:15px;
+
 }
+
+textarea{
+min-height:120px;
+resize:vertical;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.summary-item{
+display:flex;
+justify-content:space-between;
+margin:18px 0;
+font-size:15px;
+}
+
+.total{
+border-top:1px solid #333;
+margin-top:25px;
+padding-top:25px;
+font-size:24px;
+font-weight:bold;
+color:#D4AF37;
+display:flex;
+justify-content:space-between;
+}
+
+button{
+margin-top:30px;
+width:100%;
+padding:18px;
+border:none;
+border-radius:40px;
+background:#D4AF37;
+color:black;
+font-size:17px;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+background:white;
+}
+
+@media(max-width:900px){
+
+.container{
+grid-template-columns:1fr;
+}
+
+.row{
+grid-template-columns:1fr;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
+<header>
+
+<h1>STONER BEAR</h1>
+
+<p>Secure Checkout</p>
+
+</header>
+
 <div class="container">
-    <h1>Checkout</h1>
 
-    <div class="product-info" id="productDetails"></div>
+<div class="form-box">
 
-    <label>Size</label>
-    <select id="size">
-        <option>Small</option>
-        <option>Medium</option>
-        <option>Large</option>
-        <option>XL</option>
-    </select>
+<h2>Customer Information</h2>
 
-    <label>Quantity</label>
-    <input type="number" value="1" min="1" id="qty">
+<form id="checkoutForm">
 
-    <label>Full Name</label>
-    <input type="text" id="customerName" placeholder="Enter your name">
+<label>Full Name</label>
+<input type="text" id="name" required>
 
-    <label>Delivery Address</label>
-    <input type="text" id="address" placeholder="Enter delivery address">
+<label>Email Address</label>
+<input type="email" id="email" required>
 
-    <button class="whatsapp-btn" onclick="sendOrder()">
-        Complete Order on WhatsApp
-    </button>
+<label>Phone Number</label>
+<input type="tel" id="phone" required>
 
-    <button class="instagram-btn" onclick="goInstagram()">
-        Message Us on Instagram
-    </button>
+<h2 style="margin-top:45px;">Shipping Address</h2>
+
+<div class="row">
+
+<div>
+<label>Country</label>
+<input type="text" id="country" required>
 </div>
 
-<script>
-const params = new URLSearchParams(window.location.search);
-const name = params.get("name");
-const price = parseInt(params.get("price"));
+<div>
+<label>State</label>
+<input type="text" id="state" required>
+</div>
 
-document.getElementById("productDetails").innerHTML =
-    name + " - $" + price;
+</div>
 
-function sendOrder() {
-    const qty = document.getElementById("qty").value;
-    const size = document.getElementById("size").value;
-    const customerName = document.getElementById("customerName").value;
-    const address = document.getElementById("address").value;
+<div class="row">
 
-    const total = price * qty;
+<div>
+<label>City</label>
+<input type="text" id="city" required>
+</div>
 
-    const message =
-        "🔥 New Order - Stoner Bear 🔥%0A%0A" +
-        "Name: " + customerName + "%0A" +
-        "Product: " + name + "%0A" +
-        "Size: " + size + "%0A" +
-        "Quantity: " + qty + "%0A" +
-        "Total: $" + total + "%0A" +
-        "Delivery Address: " + address + "%0A%0A" +
-        "I would like to complete this purchase.";
+<div>
+<label>Postal Code</label>
+<input type="text" id="zip">
+</div>
 
-    const phoneNumber = "2348103859432";
+</div>
 
-    window.location.href =
-        "https://wa.me/" + phoneNumber + "?text=" + message;
-}
+<label>Street Address</label>
+<input type="text" id="address" required>
 
-function goInstagram() {
-    window.location.href = "https://instagram.com/stonerbear23";
-}
-</script>
+<label>Apartment / Suite (Optional)</label>
+<input type="text" id="apartment">
 
-</body>
-</html>
+<label>Order Notes</label>
+<textarea id="notes"></textarea>
